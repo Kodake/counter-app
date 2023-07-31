@@ -1,10 +1,10 @@
 import React from 'react'
-import CounterScreen from './src/screens/CounterScreen';
+import Counter from './screens/Counter'
 
-export const App = () => {
+const App: React.FC = () => {
   return (
-    <CounterScreen></CounterScreen>
+    <Counter></Counter>
   )
 }
 
-export default App;
+export default App

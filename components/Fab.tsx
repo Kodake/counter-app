@@ -1,13 +1,9 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View, Platform } from 'react-native';
+import React from 'react'
+import { Text, TouchableNativeFeedback, TouchableOpacity, View, Platform } from 'react-native';
+import { styles } from '../styles/FabStyles';
+import { Props } from '../interfaces/appInterfaces';
 
-interface Props {
-    title: string;
-    position: 'br' | 'bl'
-    onPress: () => void;
-}
-
-const Fab = ({ title, onPress, position = 'br' }: Props) => {
+const Fab: React.FC<Props> = (({ title, onPress, position = 'br' }) => {
 
     const ios = () => {
         return (
@@ -37,33 +33,8 @@ const Fab = ({ title, onPress, position = 'br' }: Props) => {
             </View>
         )
     }
-    return (Platform.OS === 'ios' ? ios() : android())
-}
 
-const styles = StyleSheet.create({
-    fabLocation: {
-        position: 'absolute',
-        bottom: 25,
-    },
-    fabLeft: {
-        left: 25
-    },
-    fabRight: {
-        right: 25
-    },
-    fab: {
-        backgroundColor: '#023e8a',
-        width: 60,
-        height: 60,
-        borderRadius: 100,
-        justifyContent: 'center'
-    },
-    fabText: {
-        color: 'white',
-        fontSize: 30,
-        fontWeight: 'bold',
-        alignSelf: 'center'
-    }
-})
+    return (Platform.OS === 'ios' ? ios() : android())
+});
 
 export default Fab;
